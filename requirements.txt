@@ -1,0 +1,7 @@
+httpx>=0.28,<1
+pydantic>=2.10,<3
+pandas>=2.2,<4
+pyarrow>=18,<24
+pytest>=8,<10
+ruff>=0.9,<1
+
