@@ -1,0 +1,21 @@
+[1/5] 세 API 동시 수집 시작 (하나의 AsyncClient + asyncio.gather)
+      수집 및 Pydantic 검증 완료: 1.011초
+      실제 응답: Open-Meteo 72시간, Countries.dev Korea (Republic of), ip-api 8.8.8.8 -> Ashburn
+[2/5] 검증 모델을 API별 표로 정규화
+      weather=72행, country=1행, ip_location=1행
+[3/5] CSV 및 Parquet 저장 후 전체 데이터 재읽기 검증
+      weather: output/csv/weather.csv
+             output/parquet/weather.parquet
+      country: output/csv/country.csv
+             output/parquet/country.parquet
+      ip_location: output/csv/ip_location.csv
+             output/parquet/ip_location.parquet
+      행 수, 열, 주요 값을 포함한 전체 값 일치 확인 완료
+[4/5] CSV/Parquet 읽기·쓰기 성능 20회 반복 측정
+ format  repeats avg_write_ms avg_read_ms  total_size_bytes
+    CSV       20        1.172       2.105              4711
+Parquet       20        1.684       2.240             18360
+      결과 파일: output/performance_results.csv
+      분석: 실측 기준 쓰기는 CSV, 읽기는 CSV, 전체 파일 크기는 CSV 형식이 우세합니다. 데이터가 작아 절대 시간 차이는 실행 환경과 캐시의 영향을 받을 수 있습니다.
+[5/5] 파이프라인 전체 작업 완료
+실행 로그 저장: report/run_output.txt

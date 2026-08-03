@@ -75,15 +75,3 @@ alias가 우선할 수 있습니다. `type -a python`으로 확인할 수 있으
 
 각 데이터셋은 `output/csv/`와 `output/parquet/`에 같은 논리 데이터로 저장됩니다.
 저장 직후 다시 읽어 전체 행·열과 모든 값이 원본 DataFrame과 일치하는지 검사합니다.
-
-## Git 커밋(사용자가 직접 수행)
-
-검사를 다시 확인한 다음 필요한 파일만 명시적으로 스테이징합니다.
-
-```bash
-git remote add origin https://github.com/bashdas/SKALA_Async_Data_Pipeline.git
-git add .gitignore README.md requirements.txt pyproject.toml src tests report
-git commit -m "feat: complete async data collection pipeline"
-```
-
-이 프로젝트 작업에서는 자동 커밋이나 푸시를 수행하지 않습니다.
